@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import json
+import random
 
 dispositivos_con_nombre = Flask(__name__)
 
@@ -47,3 +48,9 @@ def crear_Dispositivo():
     dispositivos_con_nombre[name] = {
         ""
     }
+
+def id_random():
+    rango = random.randrange(10**80)
+    id = "%016x" % rango
+    id = id[:4]
+    print(id)
