@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import json
+import random
 
 funciones = Flask(__name__)
 
@@ -40,6 +41,15 @@ def crear_Dispositivo():
     if not name or name in dispositivos:
         return jsonify({"Error": "Nombre invalido o ya existe"}), 400
     
+    dispositivos_con_nombre[name] = {
+        ""
+    }
+
+def id_random():
+    rango = random.randrange(10**80)
+    id = "%016x" % rango
+    id = id[:4]
+    print(id)
     dispositivos[name] = {
         "ID": data.get("ID", dispositivos[name]["ID"]),
         "Ip": data.get("Ip", dispositivos[name]["Ip"]),
